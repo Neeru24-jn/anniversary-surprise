@@ -1,0 +1,725 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    background: radial-gradient(circle at top,
+                                #351027,
+                                #10060e 55%,
+                                #050205);
+    color: white;
+    overflow-x: hidden;
+}
+
+#floating-emojis{
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-emoji{
+    position: absolute;
+    bottom: -60px;
+    opacity: 0;
+    animation: floatUp linear forwards;
+    filter: drop-shadow( 0 0 8px rgba(255, 80, 150, 0.5));
+}
+
+@keyframes floatUp{
+    0%{
+        transform:translateY(0)        
+        rotate(0deg);
+        opacity: 0;
+}
+    10%{
+        opacity: 0.7;
+    }
+    90%{
+        opacity: 0.7;
+    }
+    100%{
+        transform: translateY(-110vh)
+        rotate(0deg);
+        opacity: 0;
+}
+}
+
+.screen{
+    min-height: 100vh;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 25px;
+    position: relative;
+    z-index: 1;
+}
+
+.screen.active{
+    display: flex;
+}
+
+.glass{
+    width: min(600px, 95%);
+    padding: 45px 30px;
+    text-align: center;
+    background: rgba(20, 7, 18, 0.72);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 100, 160, 0.3);
+    border-radius: 30px;
+    box-shadow:  0 0 40px
+                 rgba(255, 100, 0.15);
+}
+
+.small-heart{
+    font-size: 60px;
+    animation:heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat{
+    50%{
+        transform:
+             scale(1.2);
+    }
+}
+
+h1{
+    font-size: clamp(30px, 6vw, 55px);
+    color: #ff719f;
+    text-shadow: 0 0 15px
+                 rgba(255, 60, 130, 0.7);
+}
+
+.welcome-text{
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+.sub-text{
+    color: #add;
+    line-height: 1.7;
+    margin: 20px 0 30px;
+}
+
+button{
+    border: none;
+    padding: 15px 35px;
+    border-radius: 40px;
+    background: linear-gradient(45deg,#ff236e,#ff6f9f);
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+    box-shadow: 0 0 20px               
+                rgba(255, 40, 110, 0.5);
+    transition: 0.3s;  
+}
+
+button:hover{
+   transform: scale(1.08);
+   box-shadow: 0 0 35px
+               rgba(255, 40, 110, 0.8);
+}
+
+.quiz-top{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    color: #ff8fb4;
+}
+
+.progress{
+    width: 100%;
+    height: 8px;
+    background: #2a1721;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 25px;
+}
+
+#progressBar{
+    height: 100%;
+    width: 10%;
+    background: #ff4f91;
+    transition: 0.5s;
+}
+
+#questionCard{
+    padding: 25px;
+    border-radius: 25px;
+    background: rgba(20, 10, 20, 0.75);
+    backdrop-filter: blur(15px);
+    border: 1px solid
+            rgba(255, 100, 160, 0.3);
+}
+
+#question{
+    font-size: 23px;
+    margin: 20px o;
+}
+
+#questionImagecontainer img{
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.option{
+    width: 100%;
+    padding: 15px;
+    margin:10px o;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid            rgba(255,255,255,0.15);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.option:hover{
+    background:        rgba(255, 70, 130, 0.2);
+    transform: 
+        translateX(5px);
+}
+
+#feedback{
+    text-align: center;
+    font-size: 60px;
+    min-height: 70px;
+    margin-top: 15px;
+}
+
+.correct{
+    animation: pop 0.5s;
+}
+
+.wrong{
+    animation: shake 0.5s;
+}
+
+@keyframes pop{
+    50%{
+        transform: scale(1.5);
+    }
+}
+
+@keyframes shake{
+    25%{
+        transform:
+          translateX(-10px)
+    }
+    50%{
+        transform: 
+           translateX(10px); 
+    }
+    75%{
+        transform:
+          translateX(-10px)
+    }
+}
+
+#qrcode{
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+    padding: 15px;
+    background: white;
+    width:fit-content;
+    border-radius: 15px;
+}
+
+.qr-text{
+    color: #ff9dbc;
+}
+
+/* ================= ANIME ROSE ================= */
+
+.rose-container {
+    text-align: center;
+}
+
+.surprise-text {
+    color: #ffb0c8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.rose-container h1 {
+    font-size: 35px;
+    margin-bottom: 10px;
+}
+
+.tap-text {
+    color: #ff8fb4;
+    animation: tapPulse 1.5s infinite;
+}
+
+
+/* Rose */
+
+.anime-rose {
+    position: relative;
+
+    width: 220px;
+    height: 300px;
+
+    margin: 25px auto;
+
+    cursor: pointer;
+
+    animation:
+        roseFloat 3s ease-in-out infinite;
+}
+
+
+/* Glow behind rose */
+
+.rose-glow {
+    position: absolute;
+
+    width: 180px;
+    height: 180px;
+
+    left: 20px;
+    top: 30px;
+
+    border-radius: 50%;
+
+    background: #ff176b;
+
+    filter: blur(45px);
+
+    opacity: 0.25;
+
+    animation: roseGlow 2s infinite;
+}
+
+
+@keyframes roseGlow {
+
+    50% {
+        transform: scale(1.3);
+        opacity: 0.5;
+    }
+}
+
+
+/* Petal container */
+
+.rose-petals {
+    position: absolute;
+
+    width: 170px;
+    height: 170px;
+
+    left: 25px;
+    top: 25px;
+
+    animation: bloom 3s ease-in-out infinite;
+}
+
+
+/* Individual petals */
+
+.petal {
+    position: absolute;
+
+    width: 85px;
+    height: 105px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff2f72,
+            #b90043
+        );
+
+    border-radius:
+        80% 20% 70% 30%;
+
+    box-shadow:
+        inset -8px -8px 15px
+        rgba(100,0,30,0.35),
+
+        0 0 15px
+        rgba(255,40,110,0.6);
+
+    transform-origin: bottom center;
+
+    transition: 0.8s;
+}
+
+
+/* Petal positions */
+
+.petal1 {
+    left: 45px;
+    top: 5px;
+
+    transform:
+        rotate(0deg);
+}
+
+.petal2 {
+    left: 15px;
+    top: 30px;
+
+    transform:
+        rotate(-45deg);
+}
+
+.petal3 {
+    left: 75px;
+    top: 30px;
+
+    transform:
+        rotate(45deg);
+}
+
+.petal4 {
+    left: 5px;
+    top: 65px;
+
+    transform:
+        rotate(-75deg);
+}
+
+.petal5 {
+    left: 85px;
+    top: 65px;
+
+    transform:
+        rotate(75deg);
+}
+
+.petal6 {
+    left: 30px;
+    top: 65px;
+
+    transform:
+        rotate(-25deg);
+}
+
+.petal7 {
+    left: 65px;
+    top: 65px;
+
+    transform:
+        rotate(25deg);
+}
+
+
+/* Rose center */
+
+.rose-center {
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    left: 58px;
+    top: 58px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffb0c8,
+            #ff286d 45%,
+            #a9003b
+        );
+
+    z-index: 5;
+
+    box-shadow:
+        0 0 25px
+        #ff4f91;
+
+    animation:
+        centerPulse 2s infinite;
+}
+
+
+@keyframes centerPulse {
+
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+
+/* Stem */
+
+.rose-stem {
+    position: absolute;
+
+    width: 10px;
+    height: 140px;
+
+    left: 105px;
+    top: 150px;
+
+    background:
+        linear-gradient(
+            to right,
+            #145c29,
+            #3eaa52,
+            #145c29
+        );
+
+    border-radius: 10px;
+
+    z-index: -1;
+}
+
+
+/* Leaves */
+
+.leaf {
+    position: absolute;
+
+    width: 70px;
+    height: 35px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3fae50,
+            #145c29
+        );
+
+    border-radius:
+        100% 0 100% 0;
+}
+
+
+.leaf-left {
+
+    left: 45px;
+    top: 190px;
+
+    transform:
+        rotate(-25deg);
+
+}
+
+
+.leaf-right {
+
+    right: 40px;
+    top: 220px;
+
+    transform:
+        rotate(25deg)
+        scaleX(-1);
+
+}
+
+
+/* Gentle floating */
+
+@keyframes roseFloat {
+
+    0%, 100% {
+        transform:
+            translateY(0)
+            rotate(-2deg);
+    }
+
+    50% {
+        transform:
+            translateY(-12px)
+            rotate(2deg);
+    }
+}
+
+
+/* Bloom */
+
+@keyframes bloom {
+
+    0%, 100% {
+        transform: scale(0.95);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+
+/* Tap effect */
+
+.anime-rose:active {
+    transform: scale(0.9);
+}
+
+
+/* ================= ROSE OPEN ================= */
+
+.anime-rose.opening .petal1 {
+    transform:
+        rotate(-15deg)
+        translateY(-25px);
+}
+
+.anime-rose.opening .petal2 {
+    transform:
+        rotate(-75deg)
+        translateX(-25px);
+}
+
+.anime-rose.opening .petal3 {
+    transform:
+        rotate(75deg)
+        translateX(25px);
+}
+
+.anime-rose.opening .petal4 {
+    transform:
+        rotate(-110deg)
+        translateX(-35px);
+}
+
+.anime-rose.opening .petal5 {
+    transform:
+        rotate(110deg)
+        translateX(35px);
+}
+
+.anime-rose.opening .petal6 {
+    transform:
+        rotate(-45deg)
+        translateY(20px);
+}
+
+.anime-rose.opening .petal7 {
+    transform:
+        rotate(45deg)
+        translateY(20px);
+}
+
+.anime-rose.opening .rose-glow {
+    opacity: 0.8;
+    transform: scale(1.5);
+}
+
+
+/* Mobile */
+
+@media(max-width:600px) {
+
+    .rose-container h1 {
+        font-size: 28px;
+    }
+
+    .anime-rose {
+        transform: scale(0.9);
+    }
+}
+
+#finalScreen{
+    bakground: radial-gradient(circle, rgba(255,20,100,0.2),rgba(0,0,0,0.95));
+}
+
+.final-box{
+    text-align: center;
+    padding: 30px;
+
+}
+
+.ring{
+    font-size: 110px;
+    animation: ringReveal 2s ease;
+    filter: drop-shadow(0 0 20px gold);
+}
+
+@keyframes ringReveal{
+    from{
+        transform:
+            scale(0)
+            rotate(-180deg);
+        opacity: 0;
+        }
+    to{
+        transform:
+            scale(1)
+            rotate(0);
+        opacity: 1;
+    }
+}
+
+.forever{
+    color: #ff80aa;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.signature{
+    margin: 30px 0;
+    font-size: 22px;
+    color: #ff719f;
+}
+
+.memories-box{
+    max-width: 900px;
+}
+
+.gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px, 1fr));
+    gap:20;
+    margin-top: 30px;
+}
+
+.memory{
+   background: rgba(255,255,255,0.05);
+   padding: 10px;
+   border-radius: 18px;
+   transition: 0.4s;
+}
+
+.memory:hover{
+    transform: 
+        translateY(-8px)
+        scale(1.02);
+}
+
+memory img{
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.memory p{
+    padding: 12px;
+    color: #ffb0c8
+}
+
+.end-message{
+    margin-top: 40px;
+    color: #ff719f;
+}
+
+@media(max-width:600px){
+    .glass{
+        padding: 35px 20px;
+    }
+    h1{
+        font-size: 32px;
+    }
+    #question{
+        font-size: 20px;
+    }
+    .floating-emoji{
+        font-size: 20px;
+    }
+    .rose-container h1{
+        font-size: 28px;
+    }
+}
