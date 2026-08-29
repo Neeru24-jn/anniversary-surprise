@@ -237,6 +237,7 @@ function checkAnswer(selected){
 }
 
 function showResult(){
+    alert("RESULT WORKING");
     showScreen("resultScreen");
     let message = "";
     if(score == 10){
