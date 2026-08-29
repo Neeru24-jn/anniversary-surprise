@@ -237,7 +237,7 @@ function checkAnswer(selected){
 }
 
 function showResult(){
-    showScreen("result");
+    showScreen("resultScreen");
     let message = "";
     if(score == 10){
         message = "OMG!  You Know me Perfectly! 😍";
@@ -255,8 +255,8 @@ function showQR(){
     showScreen("qrScreen");
     const qr = document.getElementById("qrcode");
     qr.innerHTML = "";
-    const surpriseURL = window.location.href.split("?")[0] + "?surprise=rose";
-    new QRCode(qr,{
+    const surpriseURL = "https://neeru24-jn.github.io/anniversary-surprise/?surprise=rose";
+    new QRCode(qr, {
         text: surpriseURL,
         width: 220,
         height: 220,
@@ -265,7 +265,7 @@ function showQR(){
     });
 }
 
-function checkORMode(){
+function checkQRMode(){
     const params = new URLSearchParams(window.location.search);
     if(params.get("surprise") === "rose"){
         showScreen("roseScreen");
@@ -273,11 +273,15 @@ function checkORMode(){
 }
 
 function openRose(){
-    const rose = document.querySelector("anime rose");
+    const rose = document.querySelector(".anime-rose");
+    if(rose) {
     rose.classList.add("opening");
+    }
     const music = document.getElementById("music");
+    if(music) {
     music.volume = 0.5;
     music.play().catch(() => {});
+   }
     createPetals();
     setTimeout(() => {
         showScreen("finalScreen");
@@ -286,7 +290,7 @@ function openRose(){
 }
 
 function createPetals(){
-    for(let i = 0;i < 30;i++){
+    for(let i = 0; i < 30; i++){
         const petal = document.createElement("div");
         petal.innerHTML = "🌹";
         petal.style.position = "fixed";
@@ -308,7 +312,7 @@ function createPetals(){
 
 function createConfetti(){
     const container = document.getElementById("confetti");
-    for(let i = openRose;i < 80;i++){
+    for(let i = 0; i < 80; i++){
         const piece  = document.createElement("span");
         piece.innerHTML = [
             "❤️",
@@ -316,22 +320,20 @@ function createConfetti(){
             "💗",
             "💖",
             "🌹"
-        ][
-            Math.floor(Math.random()*5)
-        ];
-        petal.style.position = "fixed";
-        petal.style.left = Math.random()*100 + "vw";
-        petal.style.top = "-30px";
-        petal.style.fontSize = (15 + Math.random() * 20) + "px";
-        petal.style.transition = "transform 4s linear, opacity 4s";
-        petal.style.zIndex = "1000"; 
-        container.appendChild(petal);
+        ][Math.floor(Math.random()*5)];
+        piece.style.position = "fixed";
+        piece.style.left = Math.random()*100 + "vw";
+        piece.style.top = "-30px";
+        piece.style.fontSize = (15 + Math.random() * 20) + "px";
+        piece.style.transition = "transform 4s linear, opacity 4s";
+        piece.style.zIndex = "1000"; 
+        container.appendChild(piece);
         setTimeout(() => {
-            petal.style.transform = `translateY(110vh) rotate(360deg)`;
-            petal.style.opacity = "0";
+            piece.style.transform = `translateY(110vh) rotate(360deg)`;
+            piece.style.opacity = "0";
         }, 100);
         setTimeout(() => {
-            petal.remove();
+            piece.remove();
         }, 4500);
     }
 }
