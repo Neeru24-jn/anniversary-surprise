@@ -289,35 +289,6 @@ function openRose(){
     },2200);
 }
 
-
-function createConfetti(){
-    const container = document.getElementById("confetti");
-    for(let i = 0; i < 80; i++){
-        const piece  = document.createElement("span");
-        piece.innerHTML = [
-            "❤️",
-            "💕",
-            "💗",
-            "💖",
-            "🌹"
-        ][Math.floor(Math.random()*5)];
-        piece.style.position = "fixed";
-        piece.style.left = Math.random()*100 + "vw";
-        piece.style.top = "-30px";
-        piece.style.fontSize = (15 + Math.random() * 20) + "px";
-        piece.style.transition = "transform 4s linear, opacity 4s";
-        piece.style.zIndex = "1000"; 
-        container.appendChild(piece);
-        setTimeout(() => {
-            piece.style.transform = `translateY(110vh) rotate(360deg)`;
-            piece.style.opacity = "0";
-        }, 100);
-        setTimeout(() => {
-            piece.remove();
-        }, 4500);
-    }
-}
-
 function showMemories(){
     showScreen("memories");;
 }
