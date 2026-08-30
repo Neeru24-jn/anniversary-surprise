@@ -235,11 +235,6 @@ button:hover{
     color: #ff9dbc;
 }
 
-/* ================= ANIME ROSE ================= */
-
-.rose-container {
-    text-align: center;
-}
 
 .surprise-text {
     color: #ffb0c8;
@@ -247,365 +242,36 @@ button:hover{
     margin-bottom: 10px;
 }
 
-.rose-container h1 {
-    font-size: 35px;
-    margin-bottom: 10px;
-}
-
-.tap-text {
-    color: #ff8fb4;
-    animation: tapPulse 1.5s infinite;
-}
-
-
-/* Rose */
-
-.anime-rose {
-    position: relative;
-
-    width: 220px;
-    height: 300px;
-
-    margin: 25px auto;
-
-    cursor: pointer;
-
-    animation:
-        roseFloat 3s ease-in-out infinite;
-}
-
-
-/* Glow behind rose */
-
-.rose-glow {
-    position: absolute;
-
+.rose {
     width: 180px;
-    height: 180px;
-
-    left: 20px;
-    top: 30px;
-
-    border-radius: 50%;
-
-    background: #ff176b;
-
-    filter: blur(45px);
-
-    opacity: 0.25;
-
-    animation: roseGlow 2s infinite;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto;
+    transition: transform 0.3s ease;
 }
 
+.rose:hover {
+    transform: scale(1.08);
+}
 
-@keyframes roseGlow {
+.rose.opening {
+    animation: roseOpen 1.5s ease forwards;
+}
+
+@keyframes roseOpen {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
 
     50% {
+        transform: scale(1.15);
+    }
+
+    100% {
         transform: scale(1.3);
-        opacity: 0.5;
+        opacity: 0;
     }
-}
-
-
-/* Petal container */
-
-.rose-petals {
-    position: absolute;
-
-    width: 170px;
-    height: 170px;
-
-    left: 25px;
-    top: 25px;
-
-    animation: bloom 3s ease-in-out infinite;
-}
-
-
-/* Individual petals */
-
-.petal {
-    position: absolute;
-
-    width: 85px;
-    height: 105px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff2f72,
-            #b90043
-        );
-
-    border-radius:
-        80% 20% 70% 30%;
-
-    box-shadow:
-        inset -8px -8px 15px
-        rgba(100,0,30,0.35),
-
-        0 0 15px
-        rgba(255,40,110,0.6);
-
-    transform-origin: bottom center;
-
-    transition: 0.8s;
-}
-
-
-/* Petal positions */
-
-.petal1 {
-    left: 45px;
-    top: 5px;
-
-    transform:
-        rotate(0deg);
-}
-
-.petal2 {
-    left: 15px;
-    top: 30px;
-
-    transform:
-        rotate(-45deg);
-}
-
-.petal3 {
-    left: 75px;
-    top: 30px;
-
-    transform:
-        rotate(45deg);
-}
-
-.petal4 {
-    left: 5px;
-    top: 65px;
-
-    transform:
-        rotate(-75deg);
-}
-
-.petal5 {
-    left: 85px;
-    top: 65px;
-
-    transform:
-        rotate(75deg);
-}
-
-.petal6 {
-    left: 30px;
-    top: 65px;
-
-    transform:
-        rotate(-25deg);
-}
-
-.petal7 {
-    left: 65px;
-    top: 65px;
-
-    transform:
-        rotate(25deg);
-}
-
-
-/* Rose center */
-
-.rose-center {
-    position: absolute;
-
-    width: 55px;
-    height: 55px;
-
-    left: 58px;
-    top: 58px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #ffb0c8,
-            #ff286d 45%,
-            #a9003b
-        );
-
-    z-index: 5;
-
-    box-shadow:
-        0 0 25px
-        #ff4f91;
-
-    animation:
-        centerPulse 2s infinite;
-}
-
-
-@keyframes centerPulse {
-
-    50% {
-        transform: scale(1.1);
-    }
-}
-
-
-/* Stem */
-
-.rose-stem {
-    position: absolute;
-
-    width: 10px;
-    height: 140px;
-
-    left: 105px;
-    top: 150px;
-
-    background:
-        linear-gradient(
-            to right,
-            #145c29,
-            #3eaa52,
-            #145c29
-        );
-
-    border-radius: 10px;
-
-    z-index: -1;
-}
-
-
-/* Leaves */
-
-.leaf {
-    position: absolute;
-
-    width: 70px;
-    height: 35px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #3fae50,
-            #145c29
-        );
-
-    border-radius:
-        100% 0 100% 0;
-}
-
-
-.leaf-left {
-
-    left: 45px;
-    top: 190px;
-
-    transform:
-        rotate(-25deg);
-
-}
-
-
-.leaf-right {
-
-    right: 40px;
-    top: 220px;
-
-    transform:
-        rotate(25deg)
-        scaleX(-1);
-
-}
-
-
-/* Gentle floating */
-
-@keyframes roseFloat {
-
-    0%, 100% {
-        transform:
-            translateY(0)
-            rotate(-2deg);
-    }
-
-    50% {
-        transform:
-            translateY(-12px)
-            rotate(2deg);
-    }
-}
-
-
-/* Bloom */
-
-@keyframes bloom {
-
-    0%, 100% {
-        transform: scale(0.95);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-}
-
-
-/* Tap effect */
-
-.anime-rose:active {
-    transform: scale(0.9);
-}
-
-
-/* ================= ROSE OPEN ================= */
-
-.anime-rose.opening .petal1 {
-    transform:
-        rotate(-15deg)
-        translateY(-25px);
-}
-
-.anime-rose.opening .petal2 {
-    transform:
-        rotate(-75deg)
-        translateX(-25px);
-}
-
-.anime-rose.opening .petal3 {
-    transform:
-        rotate(75deg)
-        translateX(25px);
-}
-
-.anime-rose.opening .petal4 {
-    transform:
-        rotate(-110deg)
-        translateX(-35px);
-}
-
-.anime-rose.opening .petal5 {
-    transform:
-        rotate(110deg)
-        translateX(35px);
-}
-
-.anime-rose.opening .petal6 {
-    transform:
-        rotate(-45deg)
-        translateY(20px);
-}
-
-.anime-rose.opening .petal7 {
-    transform:
-        rotate(45deg)
-        translateY(20px);
-}
-
-.anime-rose.opening .rose-glow {
-    opacity: 0.8;
-    transform: scale(1.5);
 }
 
 
@@ -617,7 +283,7 @@ button:hover{
         font-size: 28px;
     }
 
-    .anime-rose {
+    .rose {
         transform: scale(0.9);
     }
 }
