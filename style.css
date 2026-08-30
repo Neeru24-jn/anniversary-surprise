@@ -242,6 +242,11 @@ button:hover{
     margin-bottom: 10px;
 }
 
+.tap-text {
+    color: #ff8fb4;
+    animation: tapPulse 1.5s infinite;
+}
+
 .rose {
     width: 180px;
     cursor: pointer;
