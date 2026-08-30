@@ -283,33 +283,12 @@ function openRose(){
     music.volume = 0.5;
     music.play().catch(() => {});
    }
-    createPetals();
     setTimeout(() => {
         showScreen("finalScreen");
         createConfetti();
     },2200);
 }
 
-function createPetals(){
-    for(let i = 0; i < 30; i++){
-        const petal = document.createElement("div");
-        petal.innerHTML = "🌹";
-        petal.style.position = "fixed";
-        petal.style.left = Math.random()*100 + "vw";
-        petal.style.top = "-50px";
-        petal.style.fontSize = (15 + Math.random() * 25) + "px";
-        petal.style.transition = "transform 3s linear, opacity 3s";
-        petal.style.zIndex = "1000";
-        document.body.appendChild(petal);
-        setTimeout(() => {
-            petal.style.transform = `translateY(110vh) rotate(${Math.random()* 360}deg)`;
-            petal.style.opacity = "0";
-        }, 50);
-        setTimeout(() => {
-            petal.remove();
-        }, 3500);
-    }
-}
 
 function createConfetti(){
     const container = document.getElementById("confetti");
